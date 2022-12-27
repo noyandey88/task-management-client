@@ -8,7 +8,7 @@ const AddTask = () => {
   const handleTaskSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(event);
-  }
+  };
 
   return (
     <div className="w-full md:w-1/2 md:mx-auto px-2 md:px-0">

@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [isToggleOpen, setIsToggleOpen] = useState<boolean>(false);
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate('/login');
+  }
 
   const menus = <>
     <li role="none" className="flex items-stretch">
@@ -38,7 +43,7 @@ const Header = () => {
       </Link>
     </li>
     <li className="flex items-stretch">
-        <button className="text-white bg-indigo-600 px-4 py-2 my-4 rounded-md hover:bg-indigo-700">Login</button>
+        <button onClick={handleNavigate} className="text-white bg-indigo-600 px-4 py-2 my-4 rounded-md hover:bg-indigo-700">Login</button>
     </li>
   </>
 

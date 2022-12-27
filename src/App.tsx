@@ -1,4 +1,5 @@
 import React from 'react';
+import { Toaster } from 'react-hot-toast';
 import { RouterProvider } from 'react-router-dom';
 import './App.css';
 import { router } from './Routes/Router/Router';
@@ -6,7 +7,8 @@ import { router } from './Routes/Router/Router';
 function App() {
   return (
     <div className="max-w-7xl mx-auto">
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
+      <Toaster/>
     </div>
   );
 }
