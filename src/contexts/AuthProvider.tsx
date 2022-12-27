@@ -94,6 +94,7 @@ export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
     logOut,
     user,
     loading,
+    setLoading,
     auth
   }
 

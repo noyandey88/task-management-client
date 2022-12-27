@@ -6,7 +6,7 @@ import { useAuth } from '../../contexts/AuthProvider';
 const Header = () => {
   const [isToggleOpen, setIsToggleOpen] = useState<boolean>(false);
   const navigate = useNavigate();
-  const { logOut } = useAuth();
+  const { user, logOut } = useAuth();
 
   const handleNavigate = () => {
     navigate('/login');
@@ -16,11 +16,11 @@ const Header = () => {
     logOut()
       .then(() => {
         toast.success("Logout Successful");
-    })
+      })
       .catch((err) => {
-      toast.error(err.message)
-      console.error(err);
-    })
+        toast.error(err.message)
+        console.error(err);
+      })
   }
 
   const menus = <>
@@ -56,9 +56,18 @@ const Header = () => {
         <span>Media</span>
       </Link>
     </li>
-    <li className="flex items-stretch">
-        <button onClick={handleNavigate} className="text-white bg-indigo-600 px-4 py-2 my-4 rounded-md hover:bg-indigo-700">Login</button>
-    </li>
+    <>
+      {
+        user?.uid ?
+          <li className="flex items-stretch">
+            <button onClick={handleLogOut} className="text-white bg-indigo-600 px-4 py-2 my-4 rounded-md hover:bg-indigo-700">Logout</button>
+          </li>
+          :
+          <li className="flex items-stretch">
+            <button onClick={handleNavigate} className="text-white bg-indigo-600 px-4 py-2 my-4 rounded-md hover:bg-indigo-700">Login</button>
+          </li>
+      }
+    </>
   </>
 
   return (
