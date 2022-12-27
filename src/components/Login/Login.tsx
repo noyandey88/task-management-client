@@ -15,6 +15,7 @@ const Login = () => {
         navigate("/add-task");
         toast.success("Google Login Successful");
       }).catch((err) => {
+        toast.error(err.message);
         console.error(err);
       })
   }

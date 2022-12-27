@@ -1,12 +1,26 @@
 import React, { useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthProvider';
 
 const Header = () => {
   const [isToggleOpen, setIsToggleOpen] = useState<boolean>(false);
   const navigate = useNavigate();
+  const { logOut } = useAuth();
 
   const handleNavigate = () => {
     navigate('/login');
+  };
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        toast.success("Logout Successful");
+    })
+      .catch((err) => {
+      toast.error(err.message)
+      console.error(err);
+    })
   }
 
   const menus = <>

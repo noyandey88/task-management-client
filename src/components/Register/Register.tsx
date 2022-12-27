@@ -19,6 +19,7 @@ const Register = () => {
         navigate("/add-task");
         toast.success("Google Register Successful");
       }).catch((err) => {
+        toast.error(err.message);
         console.error(err);
       })
   }
