@@ -1,44 +1,74 @@
-import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
-import { app } from '../firebase/firebase.config';
 
-type AuthChildren = {
-  children: React.ReactNode
-}
-type User = {
-  
-};
-// type Profile = {
-//   displayName: string;
-//   photoURL: string;
-// }
-
-export const AuthContext = createContext({});
+import React, {
+  ReactNode,
+  useEffect,
+  useState,
+  useContext,
+  createContext,
+} from 'react'
+import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth'
+import {
+  Auth,
+  UserCredential,
+  User,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from 'firebase/auth'
+import { app } from '../firebase/firebase.config'
 
 const auth = getAuth(app);
-
 const googleProvider = new GoogleAuthProvider();
 
-const AuthProvider = ({ children }: AuthChildren) => {
-  const [user, setUser] = useState<null | User>(null);
-  const [loading, setLoading] = useState(true);
+export interface AuthProviderProps {
+  children?: ReactNode
+}
 
-  const createUser = (email: string, password: string) => {
+export interface UserContextState {
+  isAuthenticated: boolean
+  isLoading: boolean
+  id?: string
+}
+
+export const UserStateContext = createContext<UserContextState>(
+  {} as UserContextState,
+)
+export interface AuthContextModel {
+  auth: Auth
+  user: User | null
+  createUser: (email: string, password: string) => Promise<UserCredential>
+  loginUser: (email: string, password: string) => Promise<UserCredential>
+  googleSignIn: () => Promise<UserCredential>
+  logOut: () => Promise<void>
+}
+
+export const AuthContext = React.createContext<AuthContextModel>(
+  {} as AuthContextModel,
+)
+
+export function useAuth(): AuthContextModel {
+  return useContext(AuthContext)
+}
+
+export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const createUser = (email: string, password: string): Promise<UserCredential> => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  const loginUser = (email: string, password: string) => {
+  const loginUser = (email: string, password: string): Promise<UserCredential> => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const googleSignIn = () => {
+  const googleSignIn = (): Promise<UserCredential> => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
-  const logOut = () => {
+  const logOut = (): Promise<void> => {
     setLoading(true);
     return signOut(auth);
   };
@@ -63,16 +93,14 @@ const AuthProvider = ({ children }: AuthChildren) => {
     loginUser,
     googleSignIn,
     logOut,
-    // updateUserProfile,
     user,
-    loading
+    loading,
+    auth
   }
 
-  return (
-    <AuthContext.Provider value={authInfo}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
+  return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+}
 
-export default AuthProvider;
+export const useUserContext = (): UserContextState => {
+  return useContext(UserStateContext)
+}
