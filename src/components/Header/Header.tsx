@@ -7,9 +7,7 @@ const Header = () => {
   const menus = <>
     <li role="none" className="flex items-stretch">
       <Link
-        role="menuitem"
-        aria-haspopup="false"
-        className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-8"
+        className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-indigo-500 lg:px-8"
         to="/"
       >
         <span>Add Task</span>
@@ -17,10 +15,7 @@ const Header = () => {
     </li>
     <li role="none" className="flex items-stretch">
       <Link
-        role="menuitem"
-        aria-current="page"
-        aria-haspopup="false"
-        className="flex items-center gap-2 py-4 text-emerald-500 transition-colors duration-300 hover:text-emerald-600 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-8"
+        className="flex items-center gap-2 py-4 text-indigo-500 transition-colors duration-300 hover:text-indigo-600 lg:px-8"
         to="/"
       >
         <span>My Task</span>
@@ -28,33 +23,39 @@ const Header = () => {
     </li>
     <li role="none" className="flex items-stretch">
       <Link
-        role="menuitem"
-        aria-haspopup="false"
-        className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-8"
+        className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-indigo-500 lg:px-8"
         to="/"
       >
         <span>Completed</span>
       </Link>
     </li>
+    <li role="none" className="flex items-stretch">
+      <Link
+        className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-indigo-500 lg:px-8"
+        to="/"
+      >
+        <span>Media</span>
+      </Link>
+    </li>
+    <li className="flex items-stretch">
+        <button className="text-white bg-indigo-600 px-4 py-2 my-4 rounded-md hover:bg-indigo-700">Login</button>
+    </li>
   </>
 
   return (
-    <header className="border-b-1 relative z-20 w-full border-b border-slate-200 bg-white/90 shadow-lg shadow-slate-700/5 after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:border-slate-200 lg:backdrop-blur-sm lg:after:hidden">
+    <header className="relative z-20 w-full after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full lg:backdrop-blur-sm lg:after:hidden">
       <div className="relative mx-auto max-w-full px-2 md:px-0 lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]">
         <nav
           aria-label="main navigation"
-          className="flex h-[5.5rem] items-stretch justify-between font-medium text-slate-700"
+          className="flex items-stretch justify-between font-medium text-slate-700"
           role="navigation"
         >
           {/*      <!-- Brand logo --> */}
           <Link
-            id="WindUI"
-            aria-label="WindUI logo"
-            aria-current="page"
-            className="flex items-center gap-2 whitespace-nowrap py-3 text-lg focus:outline-none lg:flex-1"
+            className="flex items-center gap-2 whitespace-nowrap py-3 text-lg lg:flex-1 font-bold"
             to="/"
           >
-            Task Management
+            Task <span className="text-indigo-500">Management</span>
           </Link>
           {/*      <!-- Mobile trigger --> */}
           <button
@@ -87,18 +88,13 @@ const Header = () => {
           <ul
             role="menubar"
             aria-label="Select page"
-            className={`absolute top-0 left-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${isToggleOpen
+            className={`absolute top-0 left-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain px-2 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${isToggleOpen
               ? "visible opacity-100 backdrop-blur-sm"
               : "invisible opacity-0"
               }`}
           >
             {menus}
           </ul>
-          <div className="ml-auto flex items-center px-6 lg:ml-0 lg:p-0">
-            <button className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded bg-emerald-500 px-5 text-sm font-medium tracking-wide text-white shadow-md shadow-emerald-200 transition duration-300 hover:bg-emerald-600 hover:shadow-sm hover:shadow-emerald-200 focus:bg-emerald-700 focus:shadow-sm focus:shadow-emerald-200 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
-              <span>Login</span>
-            </button>
-          </div>
         </nav>
       </div>
     </header>
