@@ -1,13 +1,38 @@
+// @ts-nocheck
 import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { addTask } from '../../api/tasksApi';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const AddTask = () => {
-
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleTaskSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(event);
+    const form = event.target;
+    const title = form?.title?.value;
+    const description = form?.description?.value;
+    const taskImage = form?.image.files[0];
+    const userEmail = user?.email;
+    const formData = new FormData();
+    formData.append('image', taskImage);
+    const data = {
+      title,
+      description,
+      imageData: formData,
+      userEmail
+    }
+    addTask(data)
+      .then(taskData => {
+        console.log(taskData);
+        form.reset();
+        navigate('/my-tasks');
+        toast.success("Task added successfully");
+      }).catch((err) => {
+        console.log(err);
+      })
   };
 
   return (
@@ -23,10 +48,10 @@ const AddTask = () => {
           </div>
           <div>
             {/* <label htmlFor="task">Task Description</label> */}
-            <textarea name="task" id="task" cols={30} rows={5} className="w-full px-1 py-1 form-textarea border-indigo-300 rounded-sm" placeholder="Write your task description here..."></textarea>
+            <textarea name="description" id="description" cols={30} rows={5} className="w-full px-1 py-1 form-textarea border-indigo-300 rounded-sm" placeholder="Write your task description here..."></textarea>
           </div>
           <div>
-            <input type="file" name="image" id="image" className="w-full px-1 py-1 form-input border-indigo-300 rounded-sm" />
+            <input type="file" name="image" id="image" className="w-full px-1 py-1 form-input border-indigo-300 rounded-sm" accept="image/*" />
           </div>
           <div>
             <button type="submit" className="w-full px-1 py-1 bg-indigo-600 text-white font-semibold rounded-sm">Submit</button>

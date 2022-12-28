@@ -42,13 +42,14 @@ const Register = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = event.target;
+    // const form = event.target;
     // register
      createUser(userInfo.userEmail, userInfo.userPassword)
       .then((result) => {
         const user = result?.user;
         console.log(user);
         toast.success("User Registered Successful");
+        navigate("/")
       }).catch((err) => {
         toast.error(err.message);
         console.error(error);
