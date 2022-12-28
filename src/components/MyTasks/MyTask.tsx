@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 type Task = {
   task: {
@@ -16,6 +17,7 @@ type Task = {
 
 const MyTask = ({ task, handleDelete, handleComplete }: Task) => {
   const { _id, title, description, status } = task;
+  const navigate = useNavigate();
 
   return (
       status !== 'completed' &&
@@ -27,8 +29,8 @@ const MyTask = ({ task, handleDelete, handleComplete }: Task) => {
           </div>
           <div className="flex gap-2">
             <button onClick={() => handleComplete(_id)} className="text-sm bg-indigo-600 py-1 px-4 text-white font-semibold rounded-md">Complete</button>
-            <button className="text-sm bg-indigo-600 py-1 px-4 text-white font-semibold rounded-md">Details</button>
-            <button className="text-sm bg-indigo-600 py-1 px-4 text-white font-semibold rounded-md">Update</button>
+            <button onClick={()=> navigate(`/task-details/${_id}`)} className="text-sm bg-indigo-600 py-1 px-4 text-white font-semibold rounded-md">Details</button>
+            <button onClick={()=> navigate(`/update-task/${_id}`)} className="text-sm bg-indigo-600 py-1 px-4 text-white font-semibold rounded-md">Update</button>
             <button onClick={() => handleDelete(_id)} className="text-sm bg-indigo-600 py-1 px-4 text-white font-semibold rounded-md">Delete</button>
           </div>
         </div>

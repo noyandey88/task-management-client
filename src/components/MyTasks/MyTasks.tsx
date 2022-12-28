@@ -2,13 +2,14 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { updateTask } from '../../api/tasksApi';
+import { updateTaskCompleted } from '../../api/tasksApi';
 import { useAuth } from '../../contexts/AuthProvider';
 import MyTask from './MyTask';
 
 const MyTasks = () => {
   const { user } = useAuth();
   const [tasks, setTasks] = useState([]);
+  
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/tasks?email=${user?.email}`)
       .then(res => res.json())
@@ -28,7 +29,7 @@ const MyTasks = () => {
   // })
 
   const handleComplete = (id: string) => {
-    updateTask(id)
+    updateTaskCompleted(id)
       .then(data => {
         if (data.modifiedCount) {
           // refetch()

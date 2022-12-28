@@ -6,6 +6,11 @@ type TaskInfo = {
   status: boolean;
 }
 
+type TaskData = {
+  title: string;
+  description: string;
+}
+
 // post task data
 export const addTask = async (taskData: TaskInfo) => {
   const time = new Date()
@@ -26,7 +31,8 @@ export const addTask = async (taskData: TaskInfo) => {
   return postedTaskData;
 }
 
-export const updateTask = async (id: string) => {
+// update completed
+export const updateTaskCompleted = async (id: string) => {
   const url = `${process.env.REACT_APP_API_URL}/task/update/${id}`;
   const res = await fetch(url, {
     method: 'PUT',
@@ -38,3 +44,34 @@ export const updateTask = async (id: string) => {
   const data = await res.json();
   return data;
 }
+
+
+// update completed
+export const updateTaskNotCompleted = async (id: string) => {
+  const url = `${process.env.REACT_APP_API_URL}/task/update/${id}`;
+  const res = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify({ status: 'incomplete' })
+  });
+  const data = await res.json();
+  return data;
+}
+
+
+// update completed
+export const updateTask = async (id: string, task: TaskData) => {
+  const url = `${process.env.REACT_APP_API_URL}/task/update/${id}`;
+  const res = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify({...task})
+  });
+  const data = await res.json();
+  return data;
+}
+
