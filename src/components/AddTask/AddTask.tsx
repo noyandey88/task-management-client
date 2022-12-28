@@ -24,6 +24,7 @@ const AddTask = () => {
       imageData: formData,
       userEmail
     }
+    // add task to database
     addTask(data)
       .then(taskData => {
         console.log(taskData);
@@ -44,11 +45,11 @@ const AddTask = () => {
         <form onSubmit={handleTaskSubmit} className="space-y-2">
           <div>
             {/* <label htmlFor="title">Task Title:</label> */}
-            <input name="title" type="title" className="w-full px-1 py-1 form-input border-indigo-300 rounded-sm" id="title" placeholder="Task Title" />
+            <input name="title" type="title" className="w-full px-1 py-1 form-input border-indigo-300 rounded-sm" id="title" placeholder="Task Title" required />
           </div>
           <div>
             {/* <label htmlFor="task">Task Description</label> */}
-            <textarea name="description" id="description" cols={30} rows={5} className="w-full px-1 py-1 form-textarea border-indigo-300 rounded-sm" placeholder="Write your task description here..."></textarea>
+            <textarea name="description" id="description" cols={30} rows={5} className="w-full px-1 py-1 form-textarea border-indigo-300 rounded-sm" placeholder="Write your task description here..." required></textarea>
           </div>
           <div>
             <input type="file" name="image" id="image" className="w-full px-1 py-1 form-input border-indigo-300 rounded-sm" accept="image/*" />
