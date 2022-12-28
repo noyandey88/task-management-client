@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 
 type Task = {
@@ -7,24 +8,31 @@ type Task = {
     title: string;
     userEmail: string;
     imageData: string;
+    status: string;
   }
-}
+  handleDelete: Function
+  handleComplete: Function
+};
 
-const MyTask = ({ task }: Task) => {
-  const { _id, title, description } = task;
+const MyTask = ({ task, handleDelete, handleComplete }: Task) => {
+  const { _id, title, description, status } = task;
+
   return (
-    <>
-      <div className="flex justify-between items-center bg-indigo-100 px-2 py-6 rounded-md my-4">
-        <div>
-          <h2 className="font-semibold">{title}</h2>
+      status !== 'completed' &&
+      <>
+        <div className="flex flex-col bg-indigo-100 px-2 py-4 rounded-md my-4 gap-3">
+          <div>
+            <h2 className="font-semibold">{title}</h2>
+            <p>{description.slice(0, 100)}</p>
+          </div>
+          <div className="flex gap-2">
+            <button onClick={() => handleComplete(_id)} className="text-sm bg-indigo-600 py-1 px-4 text-white font-semibold rounded-md">Complete</button>
+            <button className="text-sm bg-indigo-600 py-1 px-4 text-white font-semibold rounded-md">Details</button>
+            <button className="text-sm bg-indigo-600 py-1 px-4 text-white font-semibold rounded-md">Update</button>
+            <button onClick={() => handleDelete(_id)} className="text-sm bg-indigo-600 py-1 px-4 text-white font-semibold rounded-md">Delete</button>
+          </div>
         </div>
-        <div className="flex gap-2">
-          <button className="text-sm bg-indigo-600 py-1 px-4 text-white font-semibold rounded-md">Update</button>
-          <button className="text-sm bg-indigo-600 py-1 px-4 text-white font-semibold rounded-md">Delete</button>
-          <button className="text-sm bg-indigo-600 py-1 px-4 text-white font-semibold rounded-md">Completed</button>
-        </div>
-      </div>
-    </>
+      </>
   );
 };
 

@@ -22,7 +22,8 @@ const AddTask = () => {
       title,
       description,
       imageData: formData,
-      userEmail
+      userEmail,
+      status: "incomplete"
     }
     // add task to database
     addTask(data)

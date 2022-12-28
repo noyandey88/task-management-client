@@ -2,7 +2,8 @@ type TaskInfo = {
   userEmail: string;
   taskTitle: string;
   taskDescription: string;
-  imageData: BodyInit | null | undefined
+  imageData: BodyInit | null | undefined;
+  status: boolean;
 }
 
 // post task data
@@ -23,4 +24,17 @@ export const addTask = async (taskData: TaskInfo) => {
   });
   const postedTaskData = await taskResponse.json();
   return postedTaskData;
+}
+
+export const updateTask = async (id: string) => {
+  const url = `${process.env.REACT_APP_API_URL}/task/update/${id}`;
+  const res = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify({ status: 'completed' })
+  });
+  const data = await res.json();
+  return data;
 }
