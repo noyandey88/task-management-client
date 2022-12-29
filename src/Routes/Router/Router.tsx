@@ -10,50 +10,51 @@ import Register from '../../components/Register/Register';
 import TaskDetails from '../../components/TaskDetails/TaskDetails';
 import UpdateTask from '../../components/UpdateTask/UpdateTask';
 import Main from '../../Layout/Main';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <Main />,
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
-        element: <Home/>
+        element: <Home />
       },
       {
         path: '/add-task',
-        element: <AddTask/>
+        element: <PrivateRoute><AddTask /></PrivateRoute>
       },
       {
         path: '/my-tasks',
-        element: <MyTasks/>
+        element: <PrivateRoute><MyTasks /></PrivateRoute>
       },
       {
         path: '/completed',
-        element: <Completed/>
+        element: <PrivateRoute><Completed /></PrivateRoute>
       },
       {
         path: '/media',
-        element: <Media/>
+        element: <PrivateRoute><Media /></PrivateRoute>
       },
       {
         path: '/register',
-        element: <Register/>
+        element: <Register />
       },
       {
         path: '/login',
-        element: <Login/>
+        element: <Login />
       },
       {
         path: '/update-task/:id',
-        loader: ({params}) => fetch(`${process.env.REACT_APP_API_URL}/task/${params.id}`),
-        element: <UpdateTask/>
+        loader: ({ params }) => fetch(`${process.env.REACT_APP_API_URL}/task/${params.id}`),
+        element: <PrivateRoute><UpdateTask /></PrivateRoute>
       },
       {
         path: '/task-details/:id',
-        loader: ({params}) => fetch(`${process.env.REACT_APP_API_URL}/task/${params.id}`),
-        element: <TaskDetails/>
+        loader: ({ params }) => fetch(`${process.env.REACT_APP_API_URL}/task/${params.id}`),
+        element: <PrivateRoute><TaskDetails /></PrivateRoute>
       }
     ]
   }

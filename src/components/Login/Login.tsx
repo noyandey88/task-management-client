@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
+import Spinner from '../Spinner/Spinner';
 
 const Login = () => {
-  const { loginUser, googleSignIn } = useAuth();
+  const { loginUser, googleSignIn, loading, setLoading } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
 
   const [userInfo, setUserInfo] = useState({
     userEmail: "",
@@ -50,10 +53,12 @@ const Login = () => {
         const user = result?.user;
         console.log(user);
         toast.success("User Login Successful");
-        navigate("/")
+        navigate(from, { replace: true });
+        setLoading(false);
       }).catch((err) => {
         toast.error(err.message);
         console.error(error);
+        setLoading(false);
       })
   };
 
@@ -62,13 +67,19 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        navigate("/");
+        navigate(from, { replace: true });
+        setLoading(false);
         toast.success("Google Login Successful");
       }).catch((err) => {
         toast.error(err.message);
         console.error(err);
+        setLoading(false);
       })
   };
+
+  if (loading) {
+    return <Spinner />
+  }
 
 
   return (

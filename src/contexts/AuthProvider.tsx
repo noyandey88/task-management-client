@@ -39,6 +39,7 @@ export interface AuthContextModel {
   googleSignIn: () => Promise<UserCredential>
   logOut: () => Promise<void>
   loading: boolean
+  setLoading: Function
 }
 
 export const AuthContext = React.createContext<AuthContextModel>(
