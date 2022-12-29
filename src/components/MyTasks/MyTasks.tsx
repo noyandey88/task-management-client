@@ -5,19 +5,26 @@ import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { updateTaskCompleted } from '../../api/tasksApi';
 import { useAuth } from '../../contexts/AuthProvider';
+import Spinner from '../Spinner/Spinner';
 import MyTask from './MyTask';
 
 const MyTasks = () => {
   const { user } = useAuth();
   const [tasks, setTasks] = useState([]);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    setLoading(true);
     fetch(`${process.env.REACT_APP_API_URL}/tasks?email=${user?.email}`)
       .then(res => res.json())
       .then(data => {
         console.log(data);
+        setLoading(false);
         setTasks(data);
+      }).catch((err) => {
+        console.error(err);
+        setLoading(false);
       })
   }, [user?.email]);
 
@@ -59,6 +66,10 @@ const MyTasks = () => {
         console.error(err);
         toast.error(err.message);
       })
+  };
+
+  if (loading) {
+    return <Spinner/>
   }
 
   return (

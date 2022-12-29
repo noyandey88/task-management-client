@@ -13,9 +13,10 @@ type Task = {
     status: string;
   }
   handleNotCompleted: Function
+  handleDelete: Function
 };
 
-const CompletedTask = ({ task, handleNotCompleted }: Task) => {
+const CompletedTask = ({ task, handleNotCompleted, handleDelete }: Task) => {
   const { _id, title, description, status } = task;
 
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ const CompletedTask = ({ task, handleNotCompleted }: Task) => {
       <div className='flex gap-4'>
         <button onClick={() => navigate(`/task-details/${_id}`)} className="text-sm bg-indigo-600 py-1 px-4 text-white font-semibold rounded-md">Details</button>
         <button onClick={() => handleNotCompleted(_id)} className="text-sm bg-indigo-600 py-1 px-4 text-white font-semibold rounded-md">Not Completed</button>
+        <button onClick={() => handleDelete(_id)} className="text-sm bg-indigo-600 py-1 px-4 text-white font-semibold rounded-md">Delete</button>
       </div>
       <form onSubmit={handleCommentSubmit}>
         <div className='flex gap-4'>

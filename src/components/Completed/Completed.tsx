@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { updateTaskNotCompleted } from '../../api/tasksApi';
 import { useAuth } from '../../contexts/AuthProvider';
+import Spinner from '../Spinner/Spinner';
 import CompletedTask from './CompletedTask';
 
 const Completed = () => {
@@ -19,12 +20,19 @@ const Completed = () => {
 
   const { user } = useAuth();
   const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
   useEffect(() => {
+    setLoading(true);
     fetch(`${process.env.REACT_APP_API_URL}/tasks/completed/${user?.email}?status=completed`)
       .then(res => res.json())
       .then(data => {
         console.log(data);
         setTasks(data);
+        setLoading(false);
+      }).catch((err) => {
+        console.error(err);
+        setLoading(false);
       })
   }, [user?.email]);
 
@@ -40,6 +48,27 @@ const Completed = () => {
       })
   }
 
+  const handleDelete = (id: string) => {
+    fetch(`${process.env.REACT_APP_API_URL}/task/delete/${id}`, {
+      method: 'DELETE'
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (data.deletedCount) {
+          // refetch()
+          toast.success("Completed Task deleted successfully");
+        }
+      }).catch((err) => {
+        console.error(err);
+        toast.error(err.message);
+      })
+  }
+
+  if (loading) {
+    return <Spinner/>
+  }
+
   return (
     <div className="w-full md:w-1/2 md:mx-auto px-2 md:px-0">
       <div className="mb-4">
@@ -53,6 +82,7 @@ const Completed = () => {
                     key={i}
                     task={task}
                     handleNotCompleted={handleNotCompleted}
+                    handleDelete={handleDelete}
                   ></CompletedTask>)
                 }
               </>
