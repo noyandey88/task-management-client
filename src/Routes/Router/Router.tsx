@@ -1,12 +1,9 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import AddTask from '../../components/AddTask/AddTask';
 import Completed from '../../components/Completed/Completed';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
-import Home from '../../components/Home/Home';
 import Login from '../../components/Login/Login';
 import Media from '../../components/Media/Media';
-import MyTasks from '../../components/MyTasks/MyTasks';
 import Register from '../../components/Register/Register';
 import Spinner from '../../components/Spinner/Spinner';
 import TaskDetails from '../../components/TaskDetails/TaskDetails';
@@ -14,7 +11,9 @@ import UpdateTask from '../../components/UpdateTask/UpdateTask';
 import Main from '../../Layout/Main';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 
-const LazyMyTask = React.lazy(() => import("../../components/MyTasks/MyTasks"))
+const LazyMyTask = React.lazy(() => import("../../components/MyTasks/MyTasks"));
+const LazyHome = React.lazy(() => import("../../components/Home/Home"));
+const LazyAddTask = React.lazy(() => import("../../components/AddTask/AddTask"));
 
 export const router = createBrowserRouter([
   {
@@ -24,14 +23,22 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home />
+        element: (
+          // <Home />
+          <React.Suspense fallback={<Spinner />}>
+            <LazyHome />
+          </React.Suspense>
+        )
       },
       {
         path: '/add-task',
         element: (
-          <PrivateRoute>
-            <AddTask />
-          </PrivateRoute>
+          <React.Suspense fallback={<Spinner />}>
+            <PrivateRoute>
+              {/* <AddTask /> */}
+              <LazyAddTask />
+            </PrivateRoute>
+          </React.Suspense>
         )
       },
       {
