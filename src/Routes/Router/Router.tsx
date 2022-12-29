@@ -24,7 +24,6 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: (
-          // <Home />
           <React.Suspense fallback={<Spinner />}>
             <LazyHome />
           </React.Suspense>
@@ -35,7 +34,6 @@ export const router = createBrowserRouter([
         element: (
           <React.Suspense fallback={<Spinner />}>
             <PrivateRoute>
-              {/* <AddTask /> */}
               <LazyAddTask />
             </PrivateRoute>
           </React.Suspense>
