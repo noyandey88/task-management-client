@@ -11,6 +11,12 @@ type TaskData = {
   description: string;
 }
 
+type CommentDataType = {
+  taskId: string;
+  comment: string;
+  postedTime: string;
+}
+
 // post task data
 export const addTask = async (taskData: TaskInfo) => {
   const time = new Date()
@@ -70,6 +76,20 @@ export const updateTask = async (id: string, task: TaskData) => {
       'content-type': 'application/json'
     },
     body: JSON.stringify({...task})
+  });
+  const data = await res.json();
+  return data;
+}
+
+// post a comment
+export const postAComment = async (commentData: CommentDataType) => {
+  const url = `${process.env.REACT_APP_API_URL}/task/comments`;
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify({...commentData})
   });
   const data = await res.json();
   return data;
