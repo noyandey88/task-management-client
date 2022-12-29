@@ -24,38 +24,43 @@ const Header = () => {
   }
 
   const menus = <>
-    <li role="none" className="flex items-stretch">
-      <Link
-        className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-indigo-500 lg:px-8"
-        to="/add-task"
-      >
-        <span>Add Task</span>
-      </Link>
-    </li>
-    <li role="none" className="flex items-stretch">
-      <Link
-        className="flex items-center gap-2 py-4 text-indigo-500 transition-colors duration-300 hover:text-indigo-600 lg:px-8"
-        to="/my-tasks"
-      >
-        <span>My Tasks</span>
-      </Link>
-    </li>
-    <li role="none" className="flex items-stretch">
-      <Link
-        className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-indigo-500 lg:px-8"
-        to="/completed"
-      >
-        <span>Completed</span>
-      </Link>
-    </li>
-    <li role="none" className="flex items-stretch">
-      <Link
-        className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-indigo-500 lg:px-8"
-        to="/media"
-      >
-        <span>Media</span>
-      </Link>
-    </li>
+    {
+      user?.uid &&
+      <>
+        <li role="none" className="flex items-stretch">
+          <Link
+            className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-indigo-500 lg:px-8"
+            to="/add-task"
+          >
+            <span>Add Task</span>
+          </Link>
+        </li>
+        <li role="none" className="flex items-stretch">
+          <Link
+            className="flex items-center gap-2 py-4 text-indigo-500 transition-colors duration-300 hover:text-indigo-600 lg:px-8"
+            to="/my-tasks"
+          >
+            <span>My Tasks</span>
+          </Link>
+        </li>
+        <li role="none" className="flex items-stretch">
+          <Link
+            className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-indigo-500 lg:px-8"
+            to="/completed"
+          >
+            <span>Completed</span>
+          </Link>
+        </li>
+        <li role="none" className="flex items-stretch">
+          <Link
+            className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-indigo-500 lg:px-8"
+            to="/media"
+          >
+            <span>Media</span>
+          </Link>
+        </li>
+      </>
+    }
     <>
       {
         user?.uid ?

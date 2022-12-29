@@ -11,7 +11,7 @@ const MyTasks = () => {
   const { user } = useAuth();
   const [tasks, setTasks] = useState([]);
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/tasks?email=${user?.email}`)
       .then(res => res.json())
@@ -37,11 +37,11 @@ const MyTasks = () => {
           // refetch()
           toast.success("Task Completed successfully");
           navigate('/completed')
-      }
+        }
       }).catch((err) => {
         console.error(err);
         toast.error(err.message);
-    })
+      })
   }
 
   const handleDelete = (id: string) => {
@@ -69,22 +69,22 @@ const MyTasks = () => {
       {
         tasks?.length !== 0 ?
           <>
-          <div>
-        {
-          tasks.map((task) => <MyTask
-            key={task._id}
-            task={task}
-            handleDelete={handleDelete}
-            handleComplete={handleComplete}
-          ></MyTask>)
-        }
-      </div>
+            <div>
+              {
+                tasks.map((task) => <MyTask
+                  key={task._id}
+                  task={task}
+                  handleDelete={handleDelete}
+                  handleComplete={handleComplete}
+                ></MyTask>)
+              }
+            </div>
           </>
           :
           <>
             <div>
-              <h1>You have no added tasks</h1>
-          </div>
+              <h1 className="text-xl font-bold text-indigo-600">You have no added tasks</h1>
+            </div>
           </>
       }
     </div>

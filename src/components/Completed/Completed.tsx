@@ -20,7 +20,7 @@ const Completed = () => {
   const { user } = useAuth();
   const [tasks, setTasks] = useState([]);
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/tasks?email=${user?.email}`)
+    fetch(`${process.env.REACT_APP_API_URL}/tasks/completed/${user?.email}?status=completed`)
       .then(res => res.json())
       .then(data => {
         console.log(data);
@@ -46,11 +46,22 @@ const Completed = () => {
         <h2 className="text-2xl font-semibold">Completed Tasks</h2>
         <div>
           {
-            tasks?.map((task, i) => <CompletedTask
-              key={i}
-              task={task}
-              handleNotCompleted={handleNotCompleted}
-            ></CompletedTask>)
+            tasks?.length !== 0 ?
+              <>
+                {
+                  tasks?.map((task, i) => <CompletedTask
+                    key={i}
+                    task={task}
+                    handleNotCompleted={handleNotCompleted}
+                  ></CompletedTask>)
+                }
+              </>
+              :
+              <>
+                <div className="mt-4">
+                  <h2 className="text-xl font-bold text-indigo-600">You do not have any completed tasks.</h2>
+                </div>
+              </>
           }
         </div>
       </div>

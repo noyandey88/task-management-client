@@ -14,12 +14,11 @@ type Task = {
 };
 
 const CompletedTask = ({ task, handleNotCompleted }: Task) => {
-  const { _id, title, description, status } = task;
+  const { _id, title, description } = task;
 
   const navigate = useNavigate();
 
   return (
-    status === 'completed' &&
     <div className="flex flex-col bg-indigo-100 px-2 py-4 rounded-md my-4 gap-3">
       <div>
         <h2 className="font-semibold">{title}</h2>
