@@ -88,7 +88,7 @@ const Header = () => {
             className="flex items-center gap-2 whitespace-nowrap py-3 text-lg lg:flex-1 font-bold"
             to="/"
           >
-            Task <span className="text-indigo-500">Management</span>
+            Task <span className="text-indigo-500">Writer</span>
           </Link>
           {/*      <!-- Mobile trigger --> */}
           <button
