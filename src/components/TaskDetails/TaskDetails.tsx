@@ -12,13 +12,15 @@ const TaskDetails = () => {
       </div>
       <div className="md:flex gap-4">
         <div>
-          <img className="h-60 object-cover" src={imageData} alt="taskImage" />
+          <img className="w-full h-auto md:w-60 md:h-60 object-cover" src={imageData} alt="taskImage" />
         </div>
         <div>
-          <h4>User: {userEmail}</h4>
-          <h2>Title: {title}</h2>
-          <p>Description: {description}</p>
-          <p>Posted On: {postTime ? postTime : "N/A"}</p>
+          <p className="font-semibold text-gray-400">User: <span className="font-normal">{userEmail}</span></p>
+          <p className="font-semibold">Title: {title}</p>
+          <p className="font-semibold">Description: <span className="font-normal">{description}</span></p>
+          <p className="font-semibold">Posted On:
+             <span className="font-normal">{postTime ? postTime : "N/A"}</span>
+          </p>
         </div>
       </div>
     </div>

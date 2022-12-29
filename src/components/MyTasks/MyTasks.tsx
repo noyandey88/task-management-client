@@ -2,6 +2,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { updateTaskCompleted } from '../../api/tasksApi';
 import { useAuth } from '../../contexts/AuthProvider';
 import MyTask from './MyTask';
@@ -9,6 +10,7 @@ import MyTask from './MyTask';
 const MyTasks = () => {
   const { user } = useAuth();
   const [tasks, setTasks] = useState([]);
+  const navigate = useNavigate();
   
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/tasks?email=${user?.email}`)
@@ -34,6 +36,7 @@ const MyTasks = () => {
         if (data.modifiedCount) {
           // refetch()
           toast.success("Task Completed successfully");
+          navigate('/completed')
       }
       }).catch((err) => {
         console.error(err);
