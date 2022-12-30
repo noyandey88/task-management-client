@@ -56,7 +56,7 @@ const CompletedTask = ({ task, handleNotCompleted, handleDelete }: Task) => {
       </div>
       <form onSubmit={handleCommentSubmit}>
         <div className='flex gap-4'>
-          <input className='flex-1 bg-gray-100 rounded-sm' name="comment" type="text" placeholder='Comment here...' required />
+          <input className='flex-1 bg-gray-100 rounded-sm dark:bg-gray-100' name="comment" type="text" placeholder='Comment here...' required />
           <button type="submit" className="text-sm bg-indigo-600 py-1 px-4 text-white font-semibold rounded-md">Post</button>
         </div>
       </form>

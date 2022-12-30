@@ -6,9 +6,11 @@ import { router } from './Routes/Router/Router';
 
 function App() {
   return (
-    <div className="max-w-7xl mx-auto">
-      <RouterProvider router={router} />
-      <Toaster/>
+    <div className="dark:bg-dark">
+      <div className="max-w-7xl mx-auto">
+        <RouterProvider router={router} />
+        <Toaster />
+      </div>
     </div>
   );
 }

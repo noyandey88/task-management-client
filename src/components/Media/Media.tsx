@@ -30,7 +30,7 @@ const Media = () => {
   return (
     <div className="w-full md:w-1/2 md:mx-auto px-2 md:px-0">
       <div className="mb-4">
-        <h2 className="text-2xl font-semibold">Media</h2>
+        <h2 className="text-2xl font-semibold dark:text-white">Media</h2>
       </div>
       <div>
         {
