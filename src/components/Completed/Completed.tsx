@@ -6,9 +6,12 @@ import { updateTaskNotCompleted } from '../../api/tasksApi';
 import { useAuth } from '../../contexts/AuthProvider';
 import Spinner from '../Spinner/Spinner';
 import CompletedTask from './CompletedTask';
+import useSWR from 'swr'
+
+const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 const Completed = () => {
-  // const { user } = useAuth();
+  const { user } = useAuth();
   // const { data: tasks = [], isLoading, refetch } = useQuery({
   //   queryKey: ['tasks'],
   //   queryFn: async () => {
@@ -18,28 +21,31 @@ const Completed = () => {
   //   }
   // });
 
-  const { user } = useAuth();
-  const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  // const { user } = useAuth();
+  // const [tasks, setTasks] = useState([]);
+  // const [loading, setLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    setLoading(true);
-    fetch(`${process.env.REACT_APP_API_URL}/tasks/completed/${user?.email}?status=completed`)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        setTasks(data);
-        setLoading(false);
-      }).catch((err) => {
-        console.error(err);
-        setLoading(false);
-      })
-  }, [user?.email]);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   fetch(`${process.env.REACT_APP_API_URL}/tasks/completed/${user?.email}?status=completed`)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       console.log(data);
+  //       setTasks(data);
+  //       setLoading(false);
+  //     }).catch((err) => {
+  //       console.error(err);
+  //       setLoading(false);
+  //     })
+  // }, [user?.email]);
+
+  const {data: tasks, isLoading, mutate} = useSWR(`${process.env.REACT_APP_API_URL}/tasks/user/${user?.email}?status=completed`, fetcher)
 
   const handleNotCompleted = (id: string) => {
     updateTaskNotCompleted(id)
       .then(data => {
         if (data.modifiedCount) {
+          mutate();
           toast.success("Task Back to My task");
         }
       }).catch((err) => {
@@ -56,7 +62,7 @@ const Completed = () => {
       .then(data => {
         console.log(data);
         if (data.deletedCount) {
-          // refetch()
+          mutate();
           toast.success("Completed Task deleted successfully");
         }
       }).catch((err) => {
@@ -65,7 +71,7 @@ const Completed = () => {
       })
   }
 
-  if (loading) {
+  if (isLoading) {
     return <Spinner/>
   }
 

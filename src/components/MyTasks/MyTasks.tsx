@@ -7,26 +7,31 @@ import { updateTaskCompleted } from '../../api/tasksApi';
 import { useAuth } from '../../contexts/AuthProvider';
 import Spinner from '../Spinner/Spinner';
 import MyTask from './MyTask';
+import useSWR from 'swr';
+
+const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 const MyTasks = () => {
   const { user } = useAuth();
-  const [tasks, setTasks] = useState([]);
-  const navigate = useNavigate();
-  const [loading, setLoading] = useState<boolean>(true);
+  // const [tasks, setTasks] = useState([]);
+  // const navigate = useNavigate();
+  // const [loading, setLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    setLoading(true);
-    fetch(`${process.env.REACT_APP_API_URL}/tasks?email=${user?.email}`)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        setLoading(false);
-        setTasks(data);
-      }).catch((err) => {
-        console.error(err);
-        setLoading(false);
-      })
-  }, [user?.email]);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   fetch(`${process.env.REACT_APP_API_URL}/tasks?email=${user?.email}`)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       console.log(data);
+  //       setLoading(false);
+  //       setTasks(data);
+  //     }).catch((err) => {
+  //       console.error(err);
+  //       setLoading(false);
+  //     })
+  // }, [user?.email]);
+
+  const {data: tasks, isLoading, mutate} = useSWR(`${process.env.REACT_APP_API_URL}/tasks/user/${user?.email}?status=incomplete`, fetcher)
 
   // const { data: tasks = [], isLoading, refetch } = useQuery({
   //   queryKey: ['tasks'],
@@ -41,9 +46,9 @@ const MyTasks = () => {
     updateTaskCompleted(id)
       .then(data => {
         if (data.modifiedCount) {
-          // refetch()
+          mutate();
           toast.success("Task Completed successfully");
-          navigate('/completed')
+          // navigate('/completed')
         }
       }).catch((err) => {
         console.error(err);
@@ -59,7 +64,7 @@ const MyTasks = () => {
       .then(data => {
         console.log(data);
         if (data.deletedCount) {
-          // refetch()
+          mutate();
           toast.success("Task deleted successfully");
         }
       }).catch((err) => {
@@ -68,7 +73,7 @@ const MyTasks = () => {
       })
   };
 
-  if (loading) {
+  if (isLoading) {
     return <Spinner/>
   }
 
@@ -82,7 +87,7 @@ const MyTasks = () => {
           <>
             <div>
               {
-                tasks.map((task) => <MyTask
+                tasks?.map((task) => <MyTask
                   key={task._id}
                   task={task}
                   handleDelete={handleDelete}

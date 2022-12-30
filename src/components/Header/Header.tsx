@@ -85,7 +85,7 @@ const Header = () => {
         >
           {/*      <!-- Brand logo --> */}
           <Link
-            className="flex items-center gap-2 whitespace-nowrap py-3 text-lg lg:flex-1 font-bold"
+            className="flex items-center gap-2 whitespace-nowrap py-3 text-2xl md:text-lg lg:flex-1 font-bold"
             to="/"
           >
             Task <span className="text-indigo-500">Writer</span>
