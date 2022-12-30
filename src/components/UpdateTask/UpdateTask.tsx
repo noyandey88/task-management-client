@@ -37,15 +37,15 @@ const UpdateTask = () => {
   return (
     <div className="w-full md:w-1/2 md:mx-auto px-2 md:px-0">
       <div className="mb-4">
-        <h2 className="text-2xl font-semibold">Update Task</h2>
+        <h2 className="text-2xl font-semibold dark:text-white">Update Task</h2>
       </div>
       <div>
         <form onSubmit={handleUpdate} className="space-y-2">
           <div>
-            <input defaultValue={title} name="title" type="title" className="w-full px-1 py-1 form-input border-indigo-300 rounded-sm" id="title" placeholder="Task Title" />
+            <input defaultValue={title} name="title" type="title" className="w-full px-1 py-1 form-input border-indigo-300 rounded-sm dark:bg-gray-200" id="title" placeholder="Task Title" />
           </div>
           <div>
-            <textarea defaultValue={description} name="description" id="description" cols={30} rows={5} className="w-full px-1 py-1 form-textarea border-indigo-300 rounded-sm" placeholder="Write your task description here..."></textarea>
+            <textarea defaultValue={description} name="description" id="description" cols={30} rows={5} className="w-full px-1 py-1 form-textarea border-indigo-300 rounded-sm dark:bg-gray-200" placeholder="Write your task description here..."></textarea>
           </div>
           <div>
             <button type="submit" className="w-full px-1 py-1 bg-indigo-600 text-white font-semibold rounded-sm">Update</button>
