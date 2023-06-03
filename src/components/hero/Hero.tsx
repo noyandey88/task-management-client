@@ -9,7 +9,7 @@ export default function Hero() {
         <div className="w-full lg:w-1/2">
           <div className="lg:max-w-lg">
             <h1 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">Best place to add <br /> your <span className="text-blue-500 ">Tasks</span></h1>
-            <p className="mt-3 text-gray-600 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro beatae error laborum ab amet sunt recusandae? Reiciendis natus perspiciatis optio.</p>
+            <p className="mt-3 text-gray-600 dark:text-gray-400">Categorize your tasks into different lists or projects to keep them neatly organized. Whether it's personal, work-related, or any other category, our application allows you to create customized lists to suit your needs.</p>
             <button onClick={() => navigate('/add-task')} className="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-blue-600 rounded-lg lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500 font-bold">Add Task</button>
           </div>
         </div>

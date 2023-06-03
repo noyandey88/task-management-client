@@ -46,14 +46,14 @@ const AddTask = () => {
         <form onSubmit={handleTaskSubmit} className="space-y-2">
           <div>
             {/* <label htmlFor="title">Task Title:</label> */}
-            <input name="title" type="title" className="w-full px-1 py-1 form-input dark:bg-gray-800 border-blue-300/50 rounded-sm" id="title" placeholder="Task Title" required />
+            <input name="title" type="title" className="w-full px-1 py-1 form-input dark:bg-gray-900 dark:text-slate-200 border-blue-300/50 rounded-sm placeholder:text-sm placeholder:text-slate-400" id="title" placeholder="Task Title" required />
           </div>
           <div>
             {/* <label htmlFor="task">Task Description</label> */}
-            <textarea name="description" id="description" cols={30} rows={5} className="w-full px-1 py-1 form-textarea border-blue-300/50 dark:bg-gray-800 rounded-sm" placeholder="Write your task description here..." required></textarea>
+            <textarea name="description" id="description" cols={30} rows={5} className="w-full px-1 py-1 form-textarea border-blue-300/50 dark:bg-gray-900 dark:text-slate-200 rounded-sm placeholder:text-sm placeholder:text-slate-400" placeholder="Write your task description here..." required></textarea>
           </div>
           <div>
-            <input type="file" name="image" id="image" className="w-full px-1 py-1 form-input border-blue-300/50 rounded-sm dark:bg-gray-200" accept="image/*" required />
+            <input type="file" name="image" id="image" className="w-full px-1 py-1 form-input border-none border-blue-300/50 rounded-sm bg-transparent text-sm text-slate-500 dark:text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-blue-700 hover:file:bg-violet-100" accept="image/*" required />
           </div>
           <div>
             <button type="submit" className="w-full px-1 py-2 bg-blue-600 text-white font-semibold rounded-sm">Submit</button>

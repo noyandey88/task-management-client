@@ -8,6 +8,9 @@ module.exports = {
     extend: {
       colors: {
         dark: "#181D31"
+      },
+      fontFamily: {
+        grotesk: ['Space Grotesk', 'sans-serif']
       }
     },
   },
