@@ -48,7 +48,7 @@ const Header = () => {
   }
 
   const menus = <>
-    <li className="flex items-stretch mr-8">
+    <li className={user?.uid ? 'flex items-stretch mr-0' : 'flex items-stretch mr-8'}>
       <button onClick={handleThemeChange} className="px-4 py-2 my-4 rounded-md hover:bg-indigo-100 dark:hover:bg-blue-400">
         {
           !theme ?
