@@ -1,5 +1,4 @@
 // @ts-nocheck
-import React from 'react';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { postAComment } from '../../api/tasksApi';
@@ -17,9 +16,10 @@ type Task = {
 };
 
 const CompletedTask = ({ task, handleNotCompleted, handleDelete }: Task) => {
-  const { _id, title, description, status } = task;
+  const { _id, title, description } = task;
 
   const navigate = useNavigate();
+  // const formRef = useRef<HTMLFormElement>()
 
   const handleCommentSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

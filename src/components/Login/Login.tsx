@@ -104,7 +104,7 @@ const Login = () => {
             <input onChange={handlePasswordChange} type="password" className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password" />
           </div>
           <div className="mt-6">
-            <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+            <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
               Login
             </button>
             <p className="mt-4 text-center text-gray-600 dark:text-gray-400">or sign in with</p>
@@ -122,8 +122,8 @@ const Login = () => {
           </button>
           <div className="mt-6 text-center ">
             <p className="dark:text-white">Don’t have an account yet?
-              <Link to="/register" className="text-sm font-medium text-blue-500 hover:underline dark:text-indigo-400">
-                Regiser
+              <Link to="/register" className="text-sm font-medium text-blue-500 underline dark:text-blue-400">
+                Register
               </Link>
             </p>
           </div>

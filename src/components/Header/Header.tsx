@@ -64,13 +64,12 @@ const Header = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
                 </svg>
             }
-
           </button>
         </li>
 
         <li role="none" className="flex items-stretch">
           <Link
-            className="flex items-center gap-2 py-4 transition-colors duration-300 dark:text-white hover:text-indigo-500 lg:px-8"
+            className="flex items-center gap-2 py-4 transition-colors duration-300 dark:text-white hover:text-blue-500 lg:px-8"
             to="/add-task"
           >
             <span>Add Task</span>
@@ -78,7 +77,7 @@ const Header = () => {
         </li>
         <li role="none" className="flex items-stretch">
           <Link
-            className="flex items-center gap-2 py-4 text-indigo-500 dark:text-white transition-colors duration-300 hover:text-indigo-600 lg:px-8"
+            className="flex items-center gap-2 py-4 text-blue-500 dark:text-white transition-colors duration-300 hover:text-blue-600 lg:px-8"
             to="/my-tasks"
           >
             <span>My Tasks</span>
@@ -86,7 +85,7 @@ const Header = () => {
         </li>
         <li role="none" className="flex items-stretch">
           <Link
-            className="flex items-center gap-2 py-4 transition-colors duration-300 dark:text-white hover:text-indigo-500 lg:px-8"
+            className="flex items-center gap-2 py-4 transition-colors duration-300 dark:text-white hover:text-blue-500 lg:px-8"
             to="/completed"
           >
             <span>Completed</span>
@@ -94,7 +93,7 @@ const Header = () => {
         </li>
         <li role="none" className="flex items-stretch">
           <Link
-            className="flex items-center gap-2 py-4 transition-colors duration-300 dark:text-white hover:text-indigo-500 lg:px-8"
+            className="flex items-center gap-2 py-4 transition-colors duration-300 dark:text-white hover:text-blue-500 lg:px-8"
             to="/media"
           >
             <span>Media</span>
@@ -106,11 +105,11 @@ const Header = () => {
       {
         user?.uid ?
           <li className="flex items-stretch">
-            <button onClick={handleLogOut} className="text-white bg-indigo-600 px-4 py-2 my-4 rounded-md hover:bg-indigo-700">Logout</button>
+            <button onClick={handleLogOut} className="text-white bg-blue-600 px-4 py-2 my-4 rounded-md hover:bg-blue-700">Logout</button>
           </li>
           :
           <li className="flex items-stretch">
-            <button onClick={handleNavigate} className="text-white bg-indigo-600 px-4 py-2 my-4 rounded-md hover:bg-indigo-700">Login</button>
+            <button onClick={handleNavigate} className="text-white bg-blue-600 px-4 py-2 my-4 rounded-md hover:bg-blue-700">Login</button>
           </li>
       }
     </>
@@ -129,7 +128,7 @@ const Header = () => {
             className="flex items-center gap-2 whitespace-nowrap dark:text-white py-3 text-2xl md:text-lg lg:flex-1 font-bold"
             to="/"
           >
-            Task <span className="text-indigo-500">Writer</span>
+            Task <span className="text-blue-500">Writer</span>
           </Link>
           {/*      <!-- Mobile trigger --> */}
           <button

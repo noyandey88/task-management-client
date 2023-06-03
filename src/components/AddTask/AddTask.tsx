@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { addTask } from '../../api/tasksApi';
@@ -46,17 +46,17 @@ const AddTask = () => {
         <form onSubmit={handleTaskSubmit} className="space-y-2">
           <div>
             {/* <label htmlFor="title">Task Title:</label> */}
-            <input name="title" type="title" className="w-full px-1 py-1 form-input dark:bg-gray-100 border-indigo-300 rounded-sm" id="title" placeholder="Task Title" required />
+            <input name="title" type="title" className="w-full px-1 py-1 form-input dark:bg-gray-800 border-blue-300/50 rounded-sm" id="title" placeholder="Task Title" required />
           </div>
           <div>
             {/* <label htmlFor="task">Task Description</label> */}
-            <textarea name="description" id="description" cols={30} rows={5} className="w-full px-1 py-1 form-textarea border-indigo-300 dark:bg-gray-100 rounded-sm" placeholder="Write your task description here..." required></textarea>
+            <textarea name="description" id="description" cols={30} rows={5} className="w-full px-1 py-1 form-textarea border-blue-300/50 dark:bg-gray-800 rounded-sm" placeholder="Write your task description here..." required></textarea>
           </div>
           <div>
-            <input type="file" name="image" id="image" className="w-full px-1 py-1 form-input border-indigo-300 rounded-sm dark:bg-gray-100" accept="image/*" required />
+            <input type="file" name="image" id="image" className="w-full px-1 py-1 form-input border-blue-300/50 rounded-sm dark:bg-gray-200" accept="image/*" required />
           </div>
           <div>
-            <button type="submit" className="w-full px-1 py-1 bg-indigo-600 text-white font-semibold rounded-sm">Submit</button>
+            <button type="submit" className="w-full px-1 py-2 bg-blue-600 text-white font-semibold rounded-sm">Submit</button>
           </div>
         </form>
       </div>

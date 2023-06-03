@@ -1,12 +1,10 @@
 // @ts-nocheck
-import { useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import useSWR from 'swr';
 import { updateTaskNotCompleted } from '../../api/tasksApi';
 import { useAuth } from '../../contexts/AuthProvider';
 import Spinner from '../Spinner/Spinner';
 import CompletedTask from './CompletedTask';
-import useSWR from 'swr'
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
@@ -39,7 +37,7 @@ const Completed = () => {
   //     })
   // }, [user?.email]);
 
-  const {data: tasks, isLoading, mutate} = useSWR(`${process.env.REACT_APP_API_URL}/tasks/user/${user?.email}?status=completed`, fetcher)
+  const { data: tasks, isLoading, mutate } = useSWR(`${process.env.REACT_APP_API_URL}/tasks/user/${user?.email}?status=completed`, fetcher)
 
   const handleNotCompleted = (id: string) => {
     updateTaskNotCompleted(id)
@@ -72,7 +70,7 @@ const Completed = () => {
   }
 
   if (isLoading) {
-    return <Spinner/>
+    return <Spinner />
   }
 
   return (
