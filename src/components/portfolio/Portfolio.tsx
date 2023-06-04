@@ -5,7 +5,7 @@ export default function Portfolio() {
         <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">Portfolio
         </h1>
         <p className="mt-4 text-center text-gray-500 dark:text-gray-300">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum quam voluptatibus
+          Discover a collection of our finest work and successful projects that showcase the expertise, creativity, and innovation we bring to the table. From web design and development to mobile applications and digital marketing campaigns, our portfolio represents our dedication to delivering outstanding results for our clients.
         </p>
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 md:grid-cols-2 xl:grid-cols-3">
           <div className="overflow-hidden bg-cover rounded-lg cursor-pointer h-96 group" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1621111848501-8d3634f82336?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1565&q=80")' }}>

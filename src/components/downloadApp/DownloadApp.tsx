@@ -8,9 +8,7 @@ export default function DownloadApp() {
           Try something really different right now.
         </h2>
         <p className="block max-w-4xl mt-4 text-gray-500 dark:text-gray-300">
-          Lorem, ipsum dolor sit amet consectetur
-          adipisicing elit. Esse iure tenetur commodi ipsam error voluptate magni. Adipisci repudiandae ullam commodi
-          iusto reprehenderit suscipit facere voluptatem, eaque maiores minima. Neque, officiis.
+          Download our app today and experience a seamless and efficient way to simplify your daily tasks. Whether you're managing your personal life, work, or hobbies, our app is designed to enhance your productivity and bring convenience to your fingertips.
         </p>
         <div className="mt-6">
           <Link to="/" className="inline-flex items-center justify-center w-full px-4 py-2.5 overflow-hidden text-sm text-white transition-colors duration-300 bg-gray-900 rounded-lg shadow sm:w-auto sm:mx-2 hover:bg-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80">

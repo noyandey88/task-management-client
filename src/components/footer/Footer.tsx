@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="relative mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-0 lg:pt-24">
         <div className="lg:flex lg:items-end lg:justify-between">
           <div>
-            <div>
+            <div className="text-center md:text-left">
               <h2 className="text-xl font-bold dark:text-white">Task <span className="text-blue-500">Writer</span></h2>
             </div>
             <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500 dark:text-gray-200 lg:text-left">

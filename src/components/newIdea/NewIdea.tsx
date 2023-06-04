@@ -12,9 +12,7 @@ export default function NewIdea() {
             Build Your New <span className="text-blue-500">Idea</span>
           </h2>
           <p className="mt-4 text-gray-500 dark:text-gray-300">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Quidem modi reprehenderit vitae exercitationem aliquid dolores ullam temporibus enim expedita aperiam
-            mollitia iure consectetur dicta tenetur, porro consequuntur saepe accusantium consequatur.
+            Got a brilliant idea? Let's turn it into reality together. Our team is ready to collaborate with you and bring your concept to life. Whether you're an entrepreneur, a startup, or an established business, we have the expertise and resources to transform your vision into a successful digital solution.
           </p>
           <div className="inline-flex w-full mt-6 sm:w-auto">
             <Link to="/" className="inline-flex items-center justify-center w-full px-6 py-2 text-sm text-white duration-300 bg-gray-800 rounded-lg hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80">
