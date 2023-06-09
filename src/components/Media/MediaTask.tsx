@@ -1,4 +1,3 @@
-import React from 'react';
 
 type MediaTaskProps = {
   task: {
@@ -20,7 +19,7 @@ const MediaTask = ({ task }: MediaTaskProps) => {
       </div>
       <div className="mt-2 md:mt-0">
         <h2 className="font-semibold">Task Title: <span className="capitalize">{title}</span></h2>
-        <p className="font-medium">Status: <span className="capitalize text-indigo-600">{status}</span></p>
+        <p className="font-medium">Status: <span className="capitalize text-blue-600">{status}</span></p>
       </div>
     </div>
   );

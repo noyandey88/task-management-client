@@ -8,7 +8,7 @@ export default function Reviews() {
         <section className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 lg:grid-cols-2 xl:grid-cols-3">
           <div className="p-8 border rounded-lg dark:border-gray-700">
             <p className="leading-loose text-gray-500 dark:text-gray-400">
-              "Finally, an app that keeps me on top of my busy schedule! The reminders are a lifesaver, and the ability to sync with my existing calendars is a game-changer. [App Name] has become an essential tool in my daily routine."
+              "Finally, an app that keeps me on top of my busy schedule! The reminders are a lifesaver, and the ability to sync with my existing calendars is a game-changer. Task Writer has become an essential tool in my daily routine."
             </p>
             <div className="flex items-center mt-8 -mx-2">
               <img className="object-cover mx-2 rounded-full w-14 shrink-0 h-14 ring-4 ring-gray-300 dark:ring-gray-700" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />

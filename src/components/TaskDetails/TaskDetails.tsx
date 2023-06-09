@@ -62,7 +62,7 @@ const TaskDetails = () => {
               :
               <>
                 <div>
-                  <h2 className="text-sm font-semibold text-indigo-600 dark:text-indigo-200">This task has no comments</h2>
+                  <h2 className="text-sm font-semibold text-blue-600 dark:text-indigo-200">This task has no comments</h2>
                 </div>
               </>
           }
