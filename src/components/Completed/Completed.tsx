@@ -85,6 +85,7 @@ const Completed = () => {
                   tasks?.map((task, i) => <CompletedTask
                     key={i}
                     task={task}
+                    index={i}
                     handleNotCompleted={handleNotCompleted}
                     handleDelete={handleDelete}
                   ></CompletedTask>)
@@ -93,7 +94,7 @@ const Completed = () => {
               :
               <>
                 <div className="mt-4">
-                  <h2 className="text-xl font-bold text-indigo-600">You do not have any completed tasks.</h2>
+                  <h2 className="text-xl font-bold text-blue-600">You do not have any completed tasks.</h2>
                 </div>
               </>
           }

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer aria-label="Site Footer" className="border-t-2 border-blue-100 dark:border-slate-700 mt-4">
+    <footer aria-label="Site Footer" className="mt-4">
       <div className="relative mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-0 lg:pt-24">
         <div className="lg:flex lg:items-end lg:justify-between">
           <div>

@@ -27,7 +27,7 @@ const Media = () => {
   }
 
   return (
-    <div className="w-full md:w-3/4 md:mx-auto px-2 md:px-0">
+    <div className="w-full md:w-2/4 md:mx-auto px-2 md:px-0">
       <div className="mb-4">
         <h2 className="text-2xl font-semibold dark:text-white">Media</h2>
       </div>
@@ -39,6 +39,7 @@ const Media = () => {
                 tasks.map((task, i) => <MediaTask
                   key={i}
                   task={task}
+                  index={i}
                 ></MediaTask>)
               }
             </>

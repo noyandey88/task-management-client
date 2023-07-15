@@ -1,13 +1,10 @@
 //@ts-nocheck
-import { useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import useSWR from 'swr';
 import { updateTaskCompleted } from '../../api/tasksApi';
 import { useAuth } from '../../contexts/AuthProvider';
 import Spinner from '../Spinner/Spinner';
 import MyTask from './MyTask';
-import useSWR from 'swr';
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
@@ -31,7 +28,7 @@ const MyTasks = () => {
   //     })
   // }, [user?.email]);
 
-  const {data: tasks, isLoading, mutate} = useSWR(`${process.env.REACT_APP_API_URL}/tasks/user/${user?.email}?status=incomplete`, fetcher)
+  const { data: tasks, isLoading, mutate } = useSWR(`${process.env.REACT_APP_API_URL}/tasks/user/${user?.email}?status=incomplete`, fetcher)
 
   // const { data: tasks = [], isLoading, refetch } = useQuery({
   //   queryKey: ['tasks'],
@@ -74,7 +71,7 @@ const MyTasks = () => {
   };
 
   if (isLoading) {
-    return <Spinner/>
+    return <Spinner />
   }
 
   return (
@@ -87,11 +84,12 @@ const MyTasks = () => {
           <>
             <div>
               {
-                tasks?.map((task) => <MyTask
+                tasks?.map((task, i) => <MyTask
                   key={task._id}
                   task={task}
                   handleDelete={handleDelete}
                   handleComplete={handleComplete}
+                  index={i}
                 ></MyTask>)
               }
             </div>

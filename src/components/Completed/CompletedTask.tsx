@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { postAComment } from '../../api/tasksApi';
@@ -11,11 +12,12 @@ type Task = {
     imageData: string;
     status: string;
   }
-  handleNotCompleted: Function
-  handleDelete: Function
+  handleNotCompleted: Function;
+  handleDelete: Function;
+  index: number;
 };
 
-const CompletedTask = ({ task, handleNotCompleted, handleDelete }: Task) => {
+const CompletedTask = ({ task, handleNotCompleted, handleDelete, index }: Task) => {
   const { _id, title, description } = task;
 
   const navigate = useNavigate();
@@ -44,10 +46,15 @@ const CompletedTask = ({ task, handleNotCompleted, handleDelete }: Task) => {
   }
 
   return (
-    <div className="flex flex-col bg-indigo-100 px-2 py-4 rounded-md my-4 gap-3">
+    <motion.div
+      initial={{ y: 120 }}
+      animate={{ y: 0 }}
+      transition={{ type: "spring", stiffness: (50 - (index * 10)), duration: 1 }}
+      viewport={{ once: true }}
+      className="flex flex-col bg-blue-100 px-2 py-4 rounded-md my-4 gap-3">
       <div>
         <h2 className="font-semibold">{title}</h2>
-        <p>{description.slice(0, 100)}</p>
+        <p>{description.slice(0, 100)}...</p>
       </div>
       <div className='flex gap-4'>
         <button onClick={() => navigate(`/task-details/${_id}`)} className="text-sm bg-blue-600 py-1 px-4 text-white font-semibold rounded-md">Details</button>
@@ -60,7 +67,7 @@ const CompletedTask = ({ task, handleNotCompleted, handleDelete }: Task) => {
           <button type="submit" className="text-sm bg-blue-600 py-1 px-4 text-white font-semibold rounded-md">Post</button>
         </div>
       </form>
-    </div>
+    </motion.div>
   );
 };
 

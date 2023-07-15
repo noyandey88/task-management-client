@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
@@ -27,7 +28,12 @@ const TaskDetails = () => {
   }
 
   return (
-    <div className="w-full md:w-1/2 md:mx-auto px-2 md:px-0">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 2, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className="w-full md:w-1/2 md:mx-auto px-2 md:px-0">
       <div className="mb-4">
         <h2 className="text-2xl font-semibold dark:text-white">Task Details</h2>
       </div>
@@ -68,7 +74,7 @@ const TaskDetails = () => {
           }
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
