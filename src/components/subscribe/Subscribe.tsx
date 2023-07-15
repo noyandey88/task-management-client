@@ -1,8 +1,15 @@
+import { motion } from "framer-motion"
+
 export default function Subscribe() {
   return (
     <div className="container px-6 py-8 mx-auto">
       <div className="items-center lg:flex">
-        <div className="w-full lg:w-1/2">
+        <motion.div
+          initial={{ y: 200 }}
+          whileInView={{ y: 0 }}
+          transition={{ type: "spring", stiffness: 50, duration: 1 }}
+          viewport={{ once: true }}
+          className="w-full lg:w-1/2">
           <div className="lg:max-w-lg">
             <h1 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">Subscribe To The <span className="text-blue-500">Newsletter</span></h1>
             <p className="mt-3 text-gray-600 dark:text-gray-400">be the first to knows when our <span className="font-medium text-blue-500">Brand</span> is live</p>
@@ -13,10 +20,15 @@ export default function Subscribe() {
               </button>
             </div>
           </div>
-        </div>
-        <div className="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
+        </motion.div>
+        <motion.div
+          initial={{ y: 200 }}
+          whileInView={{ y: 0 }}
+          transition={{ type: "spring", stiffness: 40, duration: 1 }}
+          viewport={{ once: true }}
+          className="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
           <img className="w-full h-full max-w-md" src="https://merakiui.com/images/components/Email-campaign-bro.svg" alt="email illustration vector art" />
-        </div>
+        </motion.div>
       </div>
     </div>
   )

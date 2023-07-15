@@ -1,13 +1,21 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 export default function DownloadApp() {
   return (
-    <section className="bg-white dark:bg-gray-900 py-8 md:py-16">
+    <motion.section
+      initial={{ y: 200 }}
+      whileInView={{ y: 0 }}
+      transition={{ type: "spring", stiffness: 50, duration: 1 }}
+      viewport={{ once: true }}
+      className="bg-white dark:bg-gray-900 py-8 md:py-16">
       <div className="container flex flex-col items-center px-4 py-12 mx-auto text-center">
-        <h2 className="text-2xl font-bold tracking-tight text-gray-800 xl:text-3xl dark:text-white">
+        <h2
+          className="text-2xl font-bold tracking-tight text-gray-800 xl:text-3xl dark:text-white">
           Try something really different right now.
         </h2>
-        <p className="block max-w-4xl mt-4 text-gray-500 dark:text-gray-300">
+        <p
+          className="block max-w-4xl mt-4 text-gray-500 dark:text-gray-300">
           Download our app today and experience a seamless and efficient way to simplify your daily tasks. Whether you're managing your personal life, work, or hobbies, our app is designed to enhance your productivity and bring convenience to your fingertips.
         </p>
         <div className="mt-6">
@@ -49,6 +57,6 @@ export default function DownloadApp() {
           </Link>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
