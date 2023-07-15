@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
 
@@ -20,10 +20,10 @@ const TaskDetails = () => {
         console.error(err);
         setLoading(false);
       })
-  }, [])
+  }, [_id])
 
   if (loading) {
-    return <Spinner/>
+    return <Spinner />
   }
 
   return (

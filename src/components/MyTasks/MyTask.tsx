@@ -1,5 +1,4 @@
 // @ts-nocheck
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 type Task = {
@@ -20,21 +19,21 @@ const MyTask = ({ task, handleDelete, handleComplete }: Task) => {
   const navigate = useNavigate();
 
   return (
-      status !== 'completed' &&
-      <>
-        <div className="flex flex-col bg-indigo-100 px-2 py-4 rounded-md my-4 gap-3">
-          <div>
-            <h2 className="font-semibold">{title}</h2>
-            <p>{description.slice(0, 100)}</p>
-          </div>
-          <div className="flex gap-2">
-            <button onClick={() => handleComplete(_id)} className="text-sm bg-blue-600 py-1 px-4 text-white font-semibold rounded-md">Complete</button>
-            <button onClick={()=> navigate(`/task-details/${_id}`)} className="text-sm bg-blue-600 py-1 px-4 text-white font-semibold rounded-md">Details</button>
-            <button onClick={()=> navigate(`/update-task/${_id}`)} className="text-sm bg-blue-600 py-1 px-4 text-white font-semibold rounded-md">Update</button>
-            <button onClick={() => handleDelete(_id)} className="text-sm bg-blue-600 py-1 px-4 text-white font-semibold rounded-md">Delete</button>
-          </div>
+    status !== 'completed' &&
+    <>
+      <div className="flex flex-col bg-indigo-100 p-4 rounded-lg my-4 gap-3 shadow-md">
+        <div>
+          <h2 className="text-xl font-semibold">{title}</h2>
+          <p className="text-gray-700">{description.slice(0, 100)}</p>
         </div>
-      </>
+        <div className="flex justify-end gap-2 mt-4">
+          <button onClick={() => handleComplete(_id)} className="px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700">Complete</button>
+          <button onClick={() => navigate(`/task-details/${_id}`)} className="px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700">Details</button>
+          <button onClick={() => navigate(`/update-task/${_id}`)} className="px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700">Update</button>
+          <button onClick={() => handleDelete(_id)} className="px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700">Delete</button>
+        </div>
+      </div>
+    </>
   );
 };
 

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../../contexts/AuthProvider';
 import Spinner from '../Spinner/Spinner';
 import MediaTask from './MediaTask';
@@ -24,15 +23,15 @@ const Media = () => {
   }, [user?.email]);
 
   if (loading) {
-    return <Spinner/>
+    return <Spinner />
   }
 
   return (
-    <div className="w-full md:w-1/2 md:mx-auto px-2 md:px-0">
+    <div className="w-full md:w-3/4 md:mx-auto px-2 md:px-0">
       <div className="mb-4">
         <h2 className="text-2xl font-semibold dark:text-white">Media</h2>
       </div>
-      <div>
+      <div className="flex flex-col gap-4">
         {
           tasks.length !== 0 ?
             <>

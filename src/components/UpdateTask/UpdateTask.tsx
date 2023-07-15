@@ -6,7 +6,7 @@ import { updateTask } from '../../api/tasksApi';
 
 const UpdateTask = () => {
   const taskData = useLoaderData();
-  const {_id, title, description } = taskData;
+  const { _id, title, description } = taskData;
   const navigate = useNavigate();
 
   console.log(taskData);
@@ -48,7 +48,7 @@ const UpdateTask = () => {
             <textarea defaultValue={description} name="description" id="description" cols={30} rows={5} className="w-full px-1 py-1 form-textarea border-indigo-300 rounded-sm dark:bg-gray-200" placeholder="Write your task description here..."></textarea>
           </div>
           <div>
-            <button type="submit" className="w-full px-1 py-1 bg-indigo-600 text-white font-semibold rounded-sm">Update</button>
+            <button type="submit" className="w-full px-1 py-1 bg-blue-600 text-white font-semibold rounded-sm">Update</button>
           </div>
         </form>
       </div>
