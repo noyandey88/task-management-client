@@ -2,7 +2,7 @@
 
 Welcome to the Task Management Web App! This application provides a convenient and efficient way to manage your tasks and stay organized. Whether you're an individual looking to streamline your personal tasks or a team collaborating on projects, this app has got you covered.
 
-> LIVE SITE : **[Task Writer](https://task-management-41fea.web.app/)**
+> LIVE SITE : **[Task Writer](https://taskwriter.netlify.app/)**
 
 ## Table of Contents
 
