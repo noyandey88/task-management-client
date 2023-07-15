@@ -1,8 +1,14 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 export default function NewIdea() {
   return (
-    <section className="bg-gray-50 dark:bg-gray-800 lg:py-12 lg:flex lg:justify-center">
+    <motion.section
+      initial={{ x: -200 }}
+      whileInView={{ x: 0 }}
+      transition={{ type: "spring", stiffness: 50, duration: 1 }}
+      viewport={{ once: true }}
+      className="bg-gray-50 dark:bg-gray-800 lg:py-12 lg:flex lg:justify-center">
       <div className="overflow-hidden bg-white dark:bg-gray-900 lg:mx-8 lg:flex lg:max-w-6xl lg:w-full lg:shadow-md lg:rounded-xl">
         <div className="lg:w-1/2">
           <div className="h-64 bg-cover lg:h-full" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80")' }} />
@@ -21,6 +27,6 @@ export default function NewIdea() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
