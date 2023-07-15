@@ -12,7 +12,7 @@ import Trial from '../tiral/Trial';
 
 const Home = () => {
   return (
-    <>
+    <main className="overflow-hidden">
       <Hero />
       <Features />
       <Trial />
@@ -23,7 +23,7 @@ const Home = () => {
       <Faq />
       <Subscribe />
       <DownloadApp />
-    </>
+    </main>
   );
 };
 
